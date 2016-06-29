@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    	<meta charset="utf-8">
+    	<title>原型对象</title>
+    	<script type="text/javascript">
+    	    function Person(){
+            }
+            Person.prototype.name="Nick";
+            Person.prototype.age=32;
+            Person.prototype.job="Soft Engineer";
+            Person.prototype.sayName=function(){
+                alert(this.name);
+            };
+
+            var person1=new Person();   //实例化两个对象
+            var person2=new Person();
+
+            person1.name="Judy";       //实例化  
+            alert(person1.name);       //"Judy"  来自实例化
+            alert(person2.name);       //"Nick"   来自原型
+
+            delete person1.name;
+            alert(person1.name);        //"Nick"  来自原型
+    	</script>
+    </head>
+    <body>
+    </body>
+</html>
