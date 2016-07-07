@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <style type="text/css">
        a{text-decoration:none;
          }
-	   *:focus{outline:none;}   /*所有元素焦点样式*/
+	   *:focus{outline:none;}   /*为什么覆盖了marquee？*/
 	   body{text-align: center;}
 	   form{                     /*设置表单样式*/
 	   	height: 580px;
@@ -159,14 +159,14 @@ if(submit!=null&&!submit.equals(""))
   Statement stmt=con.createStatement();
   String sql="insert into ruku(bianhao,mingcheng,gongyingshang,danjia,shuliang,zongjia,jinhuo,tuihuo,renyuan,beizhu)values('"+bianhao+"','"+mingcheng+"','"+gongyingshang+"','"+danjia+"','"+shuliang+"','"+zongjia+"','"+jinhuo+"','"+tuihuo+"','"+renyuan+"','"+beizhu+"')";
   String sql2="insert into kucun(bianhao,mingcheng,gongyingshang,danjia,shuliang,jinhuo,tuihuo,renyuan,beizhu)values('"+bianhao+"','"+mingcheng+"','"+gongyingshang+"','"+danjia+"','"+shuliang+"','"+jinhuo+"','"+tuihuo+"','"+renyuan+"','"+beizhu+"')";
-  int i=stmt.executeUpdate(sql);
+  int i=stmt.executeUpdate(sql);           //执行sql语句
   int j=stmt.executeUpdate(sql2);
   //int i=stmt.executeUpdate("insert into books(name,author,publish_name,price)values('"+name+"','"+author+"',
   //'"+publish_name+"',"+price+")");
   if((i==1)&&(j==1))
   {
   out.println("<script language='javaScript'>alert('添加成功，单击确定跳转到主页！');</script>");
-  response.setHeader("refresh","1;url=kucunfirstpage.html");
+  response.setHeader("refresh","1;url=kucunfirstpage.html");     
   }
   else{
   out.println("<script language='javaScript'>alert('添加失败，单击确定返回添加页面！');</script>");
