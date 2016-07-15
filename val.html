@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-cn">
+    <head>
+    	<meta charset="utf-8">
+    	<title>聚焦框</title>
+    	<script src="../jq/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    	<style type="text/css">
+    	    body{text-align: center;}
+    	    .kuang{
+    	    	margin: 0 auto;
+    	    	margin-top: 20px;
+    	    	padding-top: 30px;
+    	    	height: 150px;
+    	    	width: 250px;
+                background: #ffe;
+    	    }
+    	</style>
+    	<script type="text/javascript">
+    	    $(function(){
+    	    	$("#address").focus(function(){
+    	    	    var text1=$(this).val();
+    	    	    if (text1=="请输入邮箱地址") {
+    	    		$(this).val("");
+    	    	    }
+    	        });
+    	        $("#address").blur(function(){
+    	    	    var text1=$(this).val();
+    	    	    if (text1=="") {
+    	    		    $(this).val("请输入邮箱地址");
+    	    	    }
+    	        });
+    	        $("#password").focus(function(){
+    	    	    var text1=$(this).val();
+    	    	    if (text1=="请输入邮箱密码") {
+    	    		$(this).val("");
+    	    	    }
+    	        });
+    	        $("#password").blur(function(){
+    	    	    var text1=$(this).val();
+    	    	    if (text1=="") {
+    	    		    $(this).val("请输入邮箱密码");
+    	    	    }
+    	        });
+    	    });
+    	</script>
+    </head>
+    <body>
+    	<div class="kuang">
+    		<input type="text" id="address" value="请输入邮箱地址"/></br></br>
+    		<input type="text" id="password" value="请输入邮箱密码"/></br></br>
+    		<input type="button" value="登录"/></br></br>
+    	</div>
+    </body>
+</html>
