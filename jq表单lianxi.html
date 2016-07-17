@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+  	<meta charset="utf-8">
+  	<title></title>
+  	<script src="../jq/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+  	<style type="text/css">
+  	   .focus{
+  	   	border: 1px solid #f00;
+  	    background: #fcc;
+  	   }
+       #content{
+       	text-indent: 24px;            /*首行缩进24px*/
+       }
+       span{
+       	background: #ff8040;
+       }
+  	</style>
+    <script type="text/javascript">
+        $(function(){
+            $(":input").focus(function(){  //响应用户点击事件
+        	    $(this).addClass("focus");
+            }).blur(function(){
+        	    $(this).removeClass("focus");
+            })
+
+            $("#CheckedAll").click(function(){   //全选按钮
+                $('[name=items]:checkbox').attr('checked',true);
+            })
+            $("#CheckedNo").click(function(){    //全不选按钮
+            	$('[name=items]:checkbox').attr('checked',false);
+            })
+            $("#CheckedRev").click(function(){   //反选按钮
+            	$('[name=items]:checkbox').each(function(){
+            		this.checked=!this.checked;
+            	})
+            })
+            $("#send").click(function(){
+            	var str="你选中的是： \r\n";
+            	$('[name=items]:checkbox:checked').each(function(){
+            		str+=$(this).val()+"\r\n";
+            	})
+            	alert(str);
+            })
+
+
+            var $content=$('#content');      //详细信息部分
+            $('.bigger').click(function(){   //绑定放大按钮事件
+            	if($content.height()<500){
+            		$content.height($content.height()+50); //高度加50
+            	}
+            })
+            $('.smaller').click(function(){   //绑定缩小按钮事件
+            	if(!$content.is(":animated")){ //判断是否有动画，防止累积
+            	    if($content.height()>50){
+            		    $content.animate({height:"-=50"},400); //增加400ms动画效果
+            	    }
+            	}
+            })
+        })
+    </script>
+  </head>
+  <body>
+  	<form action="#" method="post" id="regForm">
+  		<fieldset>
+  			<legend>个人基本信息</legend>
+  			<div>
+  				<label for="uesname">名称：</label>
+  				<input id="username" type="text">
+  			</div>
+  			<div>
+  				<label for="pass">密码：</label>
+  				<input id="pass" type="password">
+  			</div>
+  			<div>
+  				你爱好的运动是？</br>
+  				<input type="checkbox" name="items" value="足球"/>足球
+  				<input type="checkbox" name="items" value="篮球"/>篮球
+  				<input type="checkbox" name="items" value="手球"/>手球    <input type="checkbox" name="items" value="羽毛球"/>羽毛球</br>
+  				<input type="button" id="CheckedAll" value="全 选"/>
+  				<input type="button" id="CheckedNo" value="全不选"/>  
+  				<input type="button" id="CheckedRev" value="反 选"/> 
+  				<input type="button" id="send" value="提 交"/> 
+  			</div>
+  			<div class="msg">
+  				<label>详细信息：</label>
+  				<div class="msg_caption">
+  					<span class="bigger">放大</span>
+  					<span class="smaller">缩小</span>
+  				</div>
+  				<div>
+  					<textarea id="content" row="8" cols="20">多行哈就好好的科比加大科技多行哈就好好的科比加大科技多行哈就好好的科比加大科技多行哈就好好的科比加大科技多行哈就好好的科比加大科技多行哈就好好的科比加大科技多行哈就好好的科比加大科技</textarea>
+  				</div>
+  			</div>
+  		</fieldset>
+  	</form>
+  </body>
+</html>
